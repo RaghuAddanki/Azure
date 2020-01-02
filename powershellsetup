@@ -1,0 +1,54 @@
+Guide to setup Windows PowerShell to work with Azure using the 2 modules: AzureRM & Azure
+
+Legend:
+ - Azure is Microsoft Azure PowerShell - Service Management;
+ - AzureRM is Azure Resource Manager Module;
+
+Why are they used?
+ - Both contains sets of modules that provide multiple cmdlets to manage Azure with Windows PowerShell. 
+
+What are pre-requisites?
+ - Minimum PowerShell version 5.0
+ 
+"AzureRM Installation Steps" 
+URL: https://www.powershellgallery.com/packages/AzureRM
+
+Step-1: Command for finding PowerShell version on your windows:
+$PSVersionTable.PSVersion
+
+Typical output
+Major  Minor  Build  Revision
+-----  -----  -----  --------
+5      1      17763  771
+
+Step-2: Verify whether the PowerShell Get-Module is available on a local machine. You need to verify because to install any module from PowerShell Gallery, you need the PowerShellGet Module:
+Get-Module PowerShellGet -list | Select-Object Name,Version,Path
+
+Typical output
+
+Name          Version Path
+----          ------- ----
+PowerShellGet 1.0.0.1 C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\1.0.0.1\PowerShellGet.psd1
+
+Note: If the module is not installed install it using these steps:
+Install-PackageProvider -Name NuGet -Force
+
+
+Step-3 Install the AzureRM Module using this command:
+Install-Module -Name AzureRM -AllowClobber
+
+Note: Use -AllowClobber to overwrite already exisitng modules if any, otherwise the installer may throw error and quit stating that these x,y,z modules are already available etc.,
+
+
+
+
+
+
+Get-Module PowerShellGet -list | Select-Object Name,Version,Path
+
+
+
+
+Installing AzureRM Module (Azure Resource Manager Module)
+URL: https://www.powershellgallery.com/packages/AzureRM
+Install-Module -Name AzureRM  -AllowClobber -scope allusers
